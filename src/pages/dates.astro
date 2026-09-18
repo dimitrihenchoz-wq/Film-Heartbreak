@@ -1,0 +1,118 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+const dates = [
+  {
+    when: "Octobre 2025",
+    what: "Avant-première",
+    where: "Cinémathèques de Jérusalem et Tel-Aviv",
+    detail: null,
+    link: null,
+  },
+  {
+    when: "23 mars 2026 — 17h15",
+    what: "Festival du film Israélien (Paris)",
+    where: "Cinéma Majestic Passy — Salle 1",
+    detail: "Version originale sous-titrée français (VOSTFR)",
+    link: {
+      href: "https://www.festivalcineisraelien.com/film/heartbreak/",
+      label: "Voir sur le site du festival",
+    },
+  },
+];
+---
+
+<Layout title="Dates & Festivals — Heartbreak">
+  <Nav />
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Projections</p>
+      <ul class="dates-list">
+        {
+          dates.map((d) => (
+            <li>
+              <p class="when display">{d.when}</p>
+              <div class="info">
+                <p class="what">{d.what}</p>
+                <p class="where">{d.where}</p>
+                {d.detail && <p class="detail">{d.detail}</p>}
+                {d.link && (
+                  <a class="link" href={d.link.href} target="_blank" rel="noopener">
+                    {d.link.label} ↗
+                  </a>
+                )}
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .section {
+    padding-block: clamp(4rem, 10vh, 7rem);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .dates-list {
+    list-style: none;
+    margin: 2rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dates-list li {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem 2rem;
+    padding-block: 2rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .dates-list li:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  @media (min-width: 700px) {
+    .dates-list li {
+      grid-template-columns: 320px 1fr;
+      align-items: baseline;
+    }
+  }
+
+  .when {
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+    margin: 0;
+  }
+
+  .what {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin: 0 0 0.35rem;
+  }
+
+  .where,
+  .detail {
+    color: var(--grey);
+    margin: 0 0 0.35rem;
+  }
+
+  .link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 1px solid var(--black);
+  }
+</style>

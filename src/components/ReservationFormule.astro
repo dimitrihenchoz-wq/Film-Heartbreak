@@ -1,0 +1,164 @@
+---
+import { withBase } from "../lib/base";
+
+const formules = [
+  {
+    eyebrow: "Formule 01",
+    name: "Mécène / financeur",
+    price: "Lettre d'engagement — sur devis",
+    description:
+      "Le mécénat finance l'ingénierie nationale du dispositif : conception des contenus, coordination, outils numériques, communication.",
+    features: [
+      "Visibilité sur tous les supports de campagne",
+      "Association à un événement national",
+      "Déductibilité fiscale (loi Aillagon, mécénat d'entreprise)",
+    ],
+    cta: "Devenir mécène",
+  },
+  {
+    eyebrow: "Formule 02",
+    name: "Association",
+    price: "Réseau des 10 associations fondatrices — sur devis",
+    description:
+      "Un pack projections solidaires combinant licence de diffusion, outils pédagogiques et billetterie, pour les associations qui organisent des séances sur leur territoire.",
+    features: [
+      "Engagement à mobiliser des projections solidaires",
+      "Reversion solidaire par projection vers les causes de l'association",
+      "Kit organisateur et accompagnement inclus",
+    ],
+    cta: "Rejoindre le réseau",
+  },
+  {
+    eyebrow: "Formule 03",
+    name: "Diffuseur / salle",
+    price: "Lettre d'intention — sur devis",
+    description:
+      "Pour les cinémas et réseaux de salles qui souhaitent rejoindre le dispositif des 100 projections simultanées du 7 octobre 2026.",
+    features: [
+      "Intégration au calendrier national du 7 octobre",
+      "Kit organisateur et éléments de communication",
+      "Mise en réseau avec une association locale",
+    ],
+    cta: "Proposer une salle",
+  },
+];
+---
+
+<section class="reservation" id="formules">
+  <div class="container">
+    <p class="eyebrow">Rejoindre le mouvement</p>
+    <h2 class="display title">Trois façons de s'engager</h2>
+    <p class="lead">
+      Montants indicatifs — devis et conditions établis avec l'Agence 6-12 selon votre situation.
+    </p>
+
+    <div class="cards">
+      {
+        formules.map((f) => (
+          <div class="card">
+            <p class="card-eyebrow eyebrow">{f.eyebrow}</p>
+            <p class="card-name display">{f.name}</p>
+            <p class="card-price">{f.price}</p>
+            <p class="card-desc">{f.description}</p>
+            <ul class="card-features">
+              {f.features.map((feat) => (
+                <li>{feat}</li>
+              ))}
+            </ul>
+            <a class="cta" href={withBase("/contact")}>{f.cta}</a>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .reservation {
+    padding-block: clamp(4rem, 10vh, 7rem);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .title {
+    font-size: 3rem;
+    margin-block: 0.5rem 2.5rem;
+  }
+
+  .lead {
+    color: var(--grey);
+    font-size: 1.1rem;
+    max-width: 50ch;
+    margin: 0 0 2.5rem;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 800px) {
+    .cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--black);
+    color: var(--white);
+    padding: 2rem;
+  }
+
+  .card-eyebrow {
+    color: var(--line);
+    margin: 0 0 0.75rem;
+  }
+
+  .card-name {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin: 0 0 0.5rem;
+  }
+
+  .card-price {
+    font-family: var(--mono);
+    font-size: 0.95rem;
+    color: var(--line);
+    margin: 0 0 2rem;
+  }
+
+  .card-desc {
+    color: var(--line);
+    margin: 0 0 2.5rem;
+  }
+
+  .card-features {
+    list-style: none;
+    margin: 0 0 2.5rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    flex-grow: 1;
+  }
+
+  .card-features li {
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--grey);
+    font-size: 0.95rem;
+  }
+
+  .cta {
+    display: inline-block;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem 1.75rem;
+    background: var(--white);
+    color: var(--black);
+  }
+</style>

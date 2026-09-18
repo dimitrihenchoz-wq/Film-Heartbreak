@@ -1,0 +1,110 @@
+<section class="concept">
+  <div class="container">
+    <p class="eyebrow">Le concept</p>
+    <h2 class="display title">Une campagne nationale de projections-débats</h2>
+
+    <div class="concept-grid">
+      <div class="concept-body">
+        <p class="body-text">
+          HEARTBREAK / MEMORIA est une campagne nationale de
+          projections-débats organisée autour du film <em>HEARTBREAK</em>, de
+          Jessica Vaturi-Dembo. Elle est dédiée à la mémoire des victimes du 7
+          octobre 2023 et des otages enlevés à Gaza, et rend hommage à toutes
+          les victimes — israéliennes et internationales, civiles et
+          militaires, de toutes origines, religions et nationalités.
+        </p>
+        <p class="body-text">
+          Conçue par Isabel Sitbon et l'Agence 6-12, la campagne associe la
+          diffusion du film à un dispositif pédagogique : projections
+          suivies de débats, programme destiné aux établissements scolaires
+          de toutes confessions, et mobilisation d'un réseau d'associations,
+          de mécènes et de salles partenaires.
+        </p>
+        <p class="body-text">
+          Lancement national le <strong>7 octobre 2026</strong>, avec 100
+          projections-débats simultanées en France. Déploiement pédagogique
+          en milieu scolaire à partir de mars 2027.
+        </p>
+      </div>
+
+      <blockquote class="pull">
+        « Dans toute guerre, les tragédies existent de tous les côtés. Nier
+        la souffrance des uns au nom de la souffrance des autres serait
+        injuste. »
+        <cite>— Jessica Vaturi-Dembo, réalisatrice</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<style>
+  .concept {
+    padding-block: clamp(4rem, 10vh, 7rem);
+    border-bottom: 1px solid var(--line);
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .concept .eyebrow {
+    color: var(--line);
+  }
+
+  .title {
+    font-size: 3rem;
+    margin-block: 0.5rem 2.5rem;
+  }
+
+  .concept-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  @media (min-width: 800px) {
+    .concept-grid {
+      grid-template-columns: repeat(12, 1fr);
+      align-items: start;
+    }
+
+    .concept-body {
+      grid-column: 1 / 8;
+    }
+
+    .pull {
+      grid-column: 9 / 13;
+    }
+  }
+
+  .body-text {
+    max-width: 60ch;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0 0 2rem;
+    color: var(--line);
+  }
+
+  .body-text:last-child {
+    margin-bottom: 0;
+  }
+
+  .pull {
+    margin: 0;
+    padding: 0;
+    border: none;
+    max-width: 40ch;
+    font-family: var(--display);
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    line-height: 1.3;
+    font-style: normal;
+    color: var(--white);
+  }
+
+  .pull cite {
+    display: block;
+    margin-top: 1rem;
+    font-family: var(--body);
+    font-style: normal;
+    font-size: 0.85rem;
+    color: var(--line);
+  }
+</style>

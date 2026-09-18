@@ -1,0 +1,178 @@
+---
+import { base } from "../lib/base";
+---
+
+<section class="ressources" id="ressources">
+  <div class="container">
+    <p class="eyebrow">Ressources</p>
+    <h2 class="display title">L'affiche et la présentation de la campagne</h2>
+    <p class="lead">
+      De quoi présenter le dispositif en une image ou en dix minutes — à
+      télécharger et diffuser librement.
+    </p>
+
+    <div class="grid">
+      <figure class="poster-card">
+        <div class="poster-visual">
+          <figcaption class="poster-caption">Affiche officielle</figcaption>
+          <img src={`${base}/images/heartbreak-poster.png`} alt="Affiche officielle du film Heartbreak" />
+        </div>
+        <div class="poster-body">
+          <p class="res-text">
+            Format portrait, prête à imprimer ou à partager — pour les
+            salles, associations et établissements scolaires.
+          </p>
+          <a class="cta" href={`${base}/images/heartbreak-poster.png`} download>
+            Télécharger l'affiche
+          </a>
+        </div>
+      </figure>
+
+      <div class="deck-card">
+        <p class="res-label">Document PDF</p>
+        <h3 class="deck-title display">La présentation de la campagne</h3>
+        <p class="res-text">
+          Le concept, le film, le dispositif, les formules de partenariat et
+          l'Agence 6-12 — le support complet à envoyer à un partenaire ou une
+          salle.
+        </p>
+        <p class="res-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+        <p class="res-text">
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+          nisi ut aliquip ex ea commodo consequat.
+        </p>
+        <p class="res-text">
+          Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+          cupidatat non proident, sunt in culpa qui officia deserunt mollit
+          anim id est laborum.
+        </p>
+        <a class="cta" href={`${base}/files/heartbreak-memoria-presentation.pptx`} download>
+          Télécharger la présentation
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ressources {
+    padding-block: clamp(4rem, 10vh, 7rem);
+    border-bottom: 1px solid var(--line);
+    background: var(--panel);
+  }
+
+  .title {
+    font-size: 3rem;
+    margin-block: 0.5rem 2.5rem;
+  }
+
+  .lead {
+    color: var(--grey);
+    font-size: 1.1rem;
+    max-width: 60ch;
+    margin: 0 0 3rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 800px) {
+    .grid {
+      grid-template-columns: 440px 1fr;
+    }
+  }
+
+  .poster-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 440px;
+    margin: 0;
+    padding: 1.5rem 1.5rem 1.5rem 0;
+  }
+
+  .poster-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .poster-caption {
+    font-family: var(--body);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.75rem;
+    color: var(--black);
+    padding-bottom: 0.75rem;
+  }
+
+  .poster-card img {
+    width: 100%;
+    filter: grayscale(1);
+  }
+
+  .deck-card {
+    background: var(--white);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .res-label {
+    font-family: var(--body);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.75rem;
+    color: var(--black);
+    margin: 0 0 0.75rem;
+  }
+
+  .deck-title {
+    font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+    margin: 0 0 2rem;
+  }
+
+  .res-text {
+    color: var(--grey);
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin: 0 0 1.5rem;
+  }
+
+  .poster-body .res-text {
+    font-size: 0.9rem;
+  }
+
+  .deck-card .cta {
+    margin-top: auto;
+  }
+
+  .cta {
+    align-self: flex-start;
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem 1.75rem;
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .cta.ghost {
+    background: transparent;
+    color: var(--black);
+    border: 1px solid var(--black);
+  }
+</style>

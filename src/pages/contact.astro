@@ -1,0 +1,204 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="Contact — Heartbreak / Memoria">
+  <Nav />
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Contact</p>
+      <h1 class="display title">Organiser, financer ou accueillir une projection</h1>
+      <p class="lead">
+        Une question sur le film, la campagne ou une projection ? Écrivez-nous.
+      </p>
+
+      <div class="contact-grid">
+        <ul class="contact-info">
+          <li>
+            <p class="contact-label">Adresse</p>
+            <p class="contact-value">Agence 6-12 — 109 boulevard Beaumarchais, 75003 Paris</p>
+          </li>
+          <li>
+            <p class="contact-label">Email campagne</p>
+            <p class="contact-value">contact@agence6-12.fr</p>
+          </li>
+          <li>
+            <p class="contact-label">Coordination</p>
+            <p class="contact-value">Isabel Sitbon — Agence 6-12</p>
+          </li>
+        </ul>
+
+        <form class="contact-form">
+          <div class="field-row">
+            <div class="field">
+              <label for="nom">Nom et prénom</label>
+              <input id="nom" name="nom" type="text" required />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="sujet">Vous souhaitez</label>
+            <select id="sujet" name="sujet">
+              <option>Réserver une projection</option>
+              <option>Devenir mécène</option>
+              <option>Rejoindre le réseau associatif</option>
+              <option>Proposer une salle</option>
+              <option>Recevoir le kit presse</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+          </div>
+
+          <button class="cta" type="submit">Envoyer</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .section {
+    padding-block: clamp(4rem, 10vh, 7rem);
+  }
+
+  .title {
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    margin-block: 0.5rem 1rem;
+  }
+
+  .lead {
+    color: var(--grey);
+    font-size: 1.1rem;
+    max-width: 50ch;
+    margin-bottom: 3rem;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    max-width: 1000px;
+  }
+
+  @media (min-width: 800px) {
+    .contact-grid {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    .contact-info {
+      grid-column: 1 / 5;
+    }
+
+    .contact-form {
+      grid-column: 6 / 13;
+    }
+  }
+
+  .contact-info {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .contact-info li {
+    padding-block: 1.25rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .contact-info li:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .contact-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin: 0 0 0.5rem;
+  }
+
+  .contact-value {
+    margin: 0;
+    font-size: 1.05rem;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 600px) {
+    .field-row {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--grey);
+  }
+
+  input,
+  select,
+  textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--line);
+    border-radius: 0;
+    color: var(--black);
+    font-family: var(--body);
+    font-size: 1rem;
+    padding: 0.6rem 0;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--black);
+  }
+
+  .cta {
+    align-self: flex-start;
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 1rem 1.75rem;
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    font-family: var(--body);
+  }
+</style>

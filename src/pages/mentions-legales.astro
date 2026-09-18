@@ -1,0 +1,77 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="Mentions légales & CGU — Heartbreak / Memoria">
+  <Nav />
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Informations légales</p>
+      <h1 class="display title">Mentions légales</h1>
+
+      <div class="prose">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+        <p>
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco
+          laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="cgu">
+    <div class="container">
+      <p class="eyebrow">Conditions générales</p>
+      <h2 class="display title">CGU</h2>
+
+      <div class="prose">
+        <p>
+          Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur.
+        </p>
+        <p>
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa
+          qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .section {
+    padding-block: clamp(3.5rem, 8vh, 6rem);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .section.alt {
+    background: var(--panel);
+  }
+
+  .title {
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    margin-block: 0.5rem 1.5rem;
+  }
+
+  .prose {
+    max-width: 65ch;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: var(--grey);
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  .prose p {
+    margin: 0;
+  }
+</style>

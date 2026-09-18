@@ -1,0 +1,122 @@
+---
+import { withBase } from "../lib/base";
+
+const inclusions = [
+  "Droit / autorisation de projection selon la formule choisie",
+  "Accès aux ressources pédagogiques de la campagne",
+  "Kit organisateur",
+  "Éléments de communication",
+  "Accompagnement pratique de l'Agence 6-12",
+];
+---
+
+<section class="inclusions">
+  <div class="container">
+    <p class="eyebrow">Licence</p>
+    <h2 class="display title">Ce que comprend une licence de projection</h2>
+    <div class="licence-wrap">
+      <ul class="inclusions-list">
+        {inclusions.map((item) => <li>{item}</li>)}
+      </ul>
+
+      <div class="licence-note">
+        <p class="note">
+          Les animateurs chargés de conduire le débat en salle restent à la
+          charge de l'organisateur ; l'Agence 6-12 accompagne la validation
+          des intervenants et de la démarche. Le détail des trois formules —
+          mécène, association, salle partenaire — est présenté ci-dessous.
+        </p>
+        <a class="cta" href={withBase("/#formules")}>Voir les formules</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .inclusions {
+    padding-block: clamp(4rem, 10vh, 7rem);
+    border-bottom: 1px solid var(--line);
+    background: var(--panel);
+  }
+
+  .title {
+    font-size: 3rem;
+    margin-block: 0.5rem 2.5rem;
+  }
+
+  .licence-wrap {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  @media (min-width: 800px) {
+    .licence-wrap {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    .inclusions-list {
+      grid-column: 1 / 7;
+    }
+
+    .licence-note {
+      grid-column: 8 / 13;
+    }
+  }
+
+  .inclusions-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .inclusions-list li {
+    position: relative;
+    padding: 1rem 0 1rem 2rem;
+    border-top: 1px solid var(--line);
+    font-size: 1rem;
+  }
+
+  .inclusions-list li:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .inclusions-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--grey);
+  }
+
+  .licence-note {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .note {
+    max-width: 60ch;
+    color: var(--grey);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0 0 1.5rem;
+  }
+
+  .cta {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem 1.75rem;
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .cta.ghost {
+    background: transparent;
+    color: var(--black);
+    border: 1px solid var(--black);
+  }
+</style>

@@ -1,0 +1,97 @@
+---
+import { withBase } from "../lib/base";
+---
+
+<section class="partenaires">
+  <div class="container">
+    <p class="eyebrow">Partenaires</p>
+    <h2 class="display title">Devenez partenaires</h2>
+
+    <ul class="partner-slots">
+      {Array.from({ length: 5 }).map(() => <li>LOGO</li>)}
+    </ul>
+
+    <p class="note">
+      Logos et noms des partenaires en cours de confirmation — plusieurs
+      partenariats institutionnels, associatifs et mécènes sont encore à
+      l'étude ou sous accord de confidentialité.
+    </p>
+
+    <div class="cta-row">
+      <a class="cta" href={withBase("/contact")}>Devenir partenaire</a>
+      <a class="cta ghost" href={withBase("/contact")}>Proposer une projection</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .partenaires {
+    padding-block: clamp(4rem, 10vh, 7rem);
+    border-bottom: 1px solid var(--line);
+    background: var(--panel);
+  }
+
+  .title {
+    font-size: 3rem;
+    margin-block: 0.5rem 2.5rem;
+  }
+
+  .partner-slots {
+    list-style: none;
+    margin: 0 0 2rem;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  @media (min-width: 700px) {
+    .partner-slots {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+
+  .partner-slots li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 3 / 2;
+    border: 1px dashed var(--grey);
+    color: var(--grey);
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+  }
+
+  .note {
+    max-width: 60ch;
+    color: var(--grey);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0 0 2.5rem;
+  }
+
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .cta {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem 1.75rem;
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .cta.ghost {
+    background: var(--black);
+    color: var(--white);
+    border: 1px solid var(--black);
+  }
+</style>

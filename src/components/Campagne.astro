@@ -1,0 +1,174 @@
+---
+import { withBase } from "../lib/base";
+
+const reperes = [
+  {
+    date: "7 oct. 2026",
+    what: "Lancement national",
+    text: "100 projections-débats simultanées, partout en France — conférence de presse nationale et campagne digitale #HeartbreakMemoria.",
+  },
+  {
+    date: "Mars 2027",
+    what: "Volet scolaire",
+    text: "Déploiement pédagogique en milieu scolaire : projections encadrées, concours national « Créer pour Résister », calendrier mémoriel récurrent.",
+  },
+  {
+    date: "Méthode",
+    what: "Trois piliers",
+    text: "Comprendre les mécanismes de la haine · Déconstruire les préjugés et la désinformation · Agir en devenant ambassadeur du dialogue.",
+  },
+];
+
+const stats = [
+  { value: "100", label: "projections-débats le 7 octobre 2026" },
+  { value: "10", label: "associations partenaires pilotes" },
+  { value: "4", label: "disciplines au concours « Créer pour Résister »" },
+  { value: "1990", label: "création de l'Agence 6-12" },
+];
+---
+
+<section class="campagne" id="campagne">
+  <div class="container">
+    <p class="eyebrow">Le dispositif</p>
+    <h2 class="display title">
+      Transmettre, faire dialoguer, lutter contre les préjugés
+    </h2>
+    <p class="lead">
+      Une approche intergénérationnelle et interconvictionnelle, conçue par
+      un comité pluriel : stratèges, inspecteurs de l'Éducation nationale,
+      historiens agrégés, un vicaire, un rabbin, un imam.
+    </p>
+
+    <div class="reperes">
+      {
+        reperes.map((r) => (
+          <div class="repere-row">
+            <p class="repere-date display">{r.date}</p>
+            <div class="repere-body">
+              <p class="repere-what">{r.what}</p>
+              <p class="repere-text">{r.text}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="stats">
+      {
+        stats.map((s) => (
+          <div class="stat">
+            <p class="stat-value display">{s.value}</p>
+            <p class="stat-label">{s.label}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="cta-row">
+      <a class="cta" href={withBase("/#formules")}>Je réserve une projection</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .campagne {
+    padding-block: clamp(4rem, 10vh, 7rem);
+    border-bottom: 1px solid var(--line);
+    background: var(--panel);
+  }
+
+  .title {
+    font-size: 3rem;
+    margin-block: 0.5rem 2.5rem;
+  }
+
+  .lead {
+    font-size: 1.1rem;
+    color: var(--grey);
+    margin: 0 0 3rem;
+  }
+
+  .reperes {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3rem;
+  }
+
+  .repere-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding-block: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .reperes .repere-row:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  @media (min-width: 700px) {
+    .repere-row {
+      grid-template-columns: 220px 1fr;
+      align-items: baseline;
+    }
+  }
+
+  .repere-date {
+    font-size: 1.1rem;
+    margin: 0;
+  }
+
+  .repere-what {
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 0 0 0.35rem;
+  }
+
+  .repere-text {
+    margin: 0;
+    color: var(--grey);
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 60ch;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+    background: var(--black);
+    padding: 2.5rem clamp(1.25rem, 5vw, 2.5rem);
+  }
+
+  @media (min-width: 700px) {
+    .stats {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .stat-value {
+    color: var(--white);
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin: 0 0 0.35rem;
+  }
+
+  .stat-label {
+    margin: 0;
+    color: var(--line);
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .cta {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem 1.75rem;
+    background: var(--black);
+    color: var(--white);
+  }
+</style>

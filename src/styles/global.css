@@ -1,0 +1,112 @@
+:root {
+  --black: #050505;
+  --white: #fafaf8;
+  --panel: #f3f1ec;
+  --accent: #f3f1ec;
+  --grey: #666;
+  --line: #ddd;
+  --display: "Fraunces", "Georgia", serif;
+  --body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", "Courier New", monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--white);
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img,
+video {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: var(--black);
+  color: var(--white);
+}
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 4rem);
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: var(--grey);
+}
+
+.display {
+  font-family: var(--display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 0.9;
+  margin: 0;
+}
+
+h2.display {
+  text-transform: none;
+}
+
+.cta {
+  transition: opacity 0.2s ease;
+}
+
+.cta:hover {
+  opacity: 0.7;
+}
+
+.hr {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 0;
+}
+
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+@media (min-width: 700px) {
+  .grid-12 {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+/* film-grain overlay, applied once at the body level */
+.grain {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}

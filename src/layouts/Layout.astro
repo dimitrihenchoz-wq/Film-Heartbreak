@@ -1,0 +1,103 @@
+---
+import "../styles/global.css";
+import CookieBanner from "../components/CookieBanner.astro";
+import { base } from "../lib/base";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "Heartbreak / Memoria — site officiel de la campagne du film.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600..900&family=Inter:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="grain"></div>
+    <slot />
+    <CookieBanner />
+
+    {
+      import.meta.env.DEV && (
+        <div id="grid-overlay" class="grid-overlay">
+          <div class="container grid-overlay-inner">
+            {Array.from({ length: 12 }).map(() => (
+              <span />
+            ))}
+          </div>
+        </div>
+      )
+    }
+  </body>
+</html>
+
+{
+  import.meta.env.DEV && (
+    <script>
+      document.addEventListener("keydown", (e) => {
+        const target = e.target as HTMLElement;
+        const isTyping =
+          target.tagName === "INPUT" ||
+          target.tagName === "TEXTAREA" ||
+          target.isContentEditable;
+
+        if (isTyping || e.metaKey || e.ctrlKey || e.altKey) return;
+
+        if (e.key.toLowerCase() === "g") {
+          document.getElementById("grid-overlay")?.classList.toggle("visible");
+        }
+      });
+    </script>
+  )
+}
+
+<style>
+  .grid-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+  }
+
+  .grid-overlay.visible {
+    display: block;
+  }
+
+  .grid-overlay-inner {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(0.75rem, 2vw, 1.5rem);
+  }
+
+  @media (min-width: 700px) {
+    .grid-overlay-inner {
+      grid-template-columns: repeat(12, 1fr);
+    }
+  }
+
+  .grid-overlay-inner span {
+    height: 100%;
+    background: rgba(255, 0, 0, 0.06);
+    border-inline: 1px dashed rgba(255, 0, 0, 0.3);
+  }
+</style>

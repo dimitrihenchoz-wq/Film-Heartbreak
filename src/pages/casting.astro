@@ -1,0 +1,214 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+const cast = [
+  "Asher Zelmati",
+  "Mor Birger",
+  "Idan Kogan",
+  "Serah Zelmati",
+  "Shlomo Alfandary",
+  "Ron Bahat",
+  "Rachel Duran",
+  "Talia Duran",
+  "Yotam & Elad",
+  "Yael Klein",
+  "Maya Izoutcheev",
+  "Aviva Siegel",
+  "Batsheva Yahalomi",
+];
+
+const crew = [
+  { role: "Scénario & réalisation", name: "Jessica Vaturi-Dembo" },
+  { role: "Image", name: "Yaniv Berman" },
+  { role: "Montage", name: "Yann Dedet & Yaniv Berman" },
+  { role: "Montage son", name: "Michael Goorevich" },
+  { role: "Son", name: "Alexander Obrant" },
+  { role: "Bruitage", name: "Elizabeth Balzhi" },
+  { role: "Étalonnage", name: "Sergio Bezrukoff" },
+  { role: "Effets spéciaux", name: "Hanan Offner" },
+  { role: "Graphisme", name: "Keren Eis" },
+  { role: "Musique", name: "Ilan Chouraki" },
+];
+
+const filmography = [
+  { title: "Where Is My Son", year: "2024" },
+  { title: "They Call Us Slaves", year: "2013 – 2023", note: "série documentaire" },
+  { title: "Jeanne ou les images du monde", year: "2012" },
+  { title: "Kaparah", year: "2008" },
+];
+---
+
+<Layout title="Casting & Équipe — Heartbreak">
+  <Nav />
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Réalisation</p>
+      <h1 class="display name">Jessica Vaturi-Dembo</h1>
+
+      <h2 class="subhead">Filmographie sélective</h2>
+      <ul class="filmo">
+        {
+          filmography.map((f) => (
+            <li>
+              <span class="f-title">{f.title}</span>
+              <span class="f-year">
+                {f.year}
+                {f.note && ` — ${f.note}`}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <p class="eyebrow">Casting</p>
+      <ul class="cast-grid">
+        {cast.map((name) => <li>{name}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Équipe technique</p>
+      <ul class="crew-list">
+        {
+          crew.map((c) => (
+            <li>
+              <span class="c-role">{c.role}</span>
+              <span class="c-name">{c.name}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <p class="eyebrow">Production</p>
+      <p class="body-text">Vito Films & HIBoo Productions</p>
+      <p class="eyebrow spaced">Distribution</p>
+      <p class="body-text">Costanza Film Distribution</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .section {
+    padding-block: clamp(3.5rem, 8vh, 6rem);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .section.alt {
+    background: var(--panel);
+  }
+
+  .name {
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    margin-block: 0.5rem 2.5rem;
+  }
+
+  .subhead {
+    font-family: var(--body);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.85rem;
+    color: var(--grey);
+    margin-bottom: 1.25rem;
+  }
+
+  .filmo {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .filmo li {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding-block: 0.9rem;
+    border-top: 1px solid var(--line);
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+  }
+
+  .f-year {
+    color: var(--grey);
+  }
+
+  .cast-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem 2rem;
+  }
+
+  @media (min-width: 600px) {
+    .cast-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .cast-grid li {
+    font-family: var(--display);
+    text-transform: uppercase;
+    font-size: clamp(1.2rem, 2.8vw, 1.8rem);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 0.75rem;
+  }
+
+  .crew-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    max-width: 700px;
+  }
+
+  .crew-list li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 0.9rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .crew-list li:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .c-role {
+    color: var(--grey);
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .c-name {
+    text-align: right;
+  }
+
+  .body-text {
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    margin: 0 0 1.5rem;
+  }
+
+  .eyebrow.spaced {
+    margin-top: 2rem;
+  }
+</style>

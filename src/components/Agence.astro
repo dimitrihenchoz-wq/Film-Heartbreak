@@ -1,0 +1,111 @@
+---
+const campagnes = [
+  "Le Défi collectif — Ligue nationale contre le cancer (jeu ludo-pédagogique sur les compétences psychosociales)",
+  "Femmes de Courage, Actrices de Paix — autour du film Les Goûteuses d'Hitler",
+];
+---
+
+<section class="agence" id="agence">
+  <div class="container">
+    <p class="eyebrow">L'agence</p>
+    <h2 class="display title">Conçue par l'Agence 6-12</h2>
+
+    <div class="grid">
+      <div>
+        <p class="text">
+          L'Agence 6-12 est une agence d'ingénierie de communication
+          ludo-pédagogique : conception de dispositifs éducatifs,
+          mobilisation des acteurs de l'éducation, montage de financements
+          publics et privés.
+        </p>
+        <p class="text">
+          Fondée par Isabel Sitbon, elle met cette expertise au service des
+          grands enjeux de société — dont HEARTBREAK / MEMORIA est
+          aujourd'hui le dispositif le plus ambitieux.
+        </p>
+        <p class="fact">
+          <strong>Fondée en 1990</strong> — Paris, 109 boulevard Beaumarchais
+          (3e)
+        </p>
+      </div>
+      <div>
+        <p class="label">Autres campagnes de l'agence</p>
+        <ul class="campagnes-list">
+          {campagnes.map((c) => <li>{c}</li>)}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .agence {
+    padding-block: clamp(4rem, 10vh, 7rem);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .title {
+    font-size: 3rem;
+    margin-block: 0.5rem 2.5rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  @media (min-width: 700px) {
+    .grid {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    .grid > :first-child {
+      grid-column: 1 / 7;
+    }
+
+    .grid > :last-child {
+      grid-column: 8 / 13;
+    }
+  }
+
+  .text {
+    max-width: 55ch;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin: 0 0 1.25rem;
+  }
+
+  .fact {
+    margin: 1.5rem 0 0;
+    font-size: 0.95rem;
+    color: var(--grey);
+  }
+
+  .label {
+    font-family: var(--body);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.75rem;
+    color: var(--black);
+    margin: 0 0 1rem;
+  }
+
+  .campagnes-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .campagnes-list li {
+    padding-block: 1rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .campagnes-list li:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+</style>

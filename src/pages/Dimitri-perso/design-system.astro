@@ -1,0 +1,289 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+
+const colors = [
+  { name: "--black", value: "#050505", swatchDark: true },
+  { name: "--white", value: "#fafaf8" },
+  { name: "--panel", value: "#f3f1ec" },
+  { name: "--accent", value: "#f3f1ec" },
+  { name: "--grey", value: "#666" },
+  { name: "--line", value: "#ddd" },
+];
+
+const scale = [
+  { label: "Display XL", size: "clamp(2.5rem, 8vw, 6rem)", tag: "h1" },
+  { label: "Display L", size: "clamp(2.2rem, 6vw, 4rem)", tag: "h2" },
+  { label: "Display M", size: "clamp(1.6rem, 4vw, 2.5rem)", tag: "h3" },
+  { label: "Body lead", size: "1.1rem", tag: "p" },
+  { label: "Body", size: "1rem", tag: "p" },
+  { label: "Eyebrow", size: "0.7rem", tag: "p" },
+];
+---
+
+<Layout title="Design system — Heartbreak / Memoria" description="Référence des styles du site.">
+  <Nav />
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Référence interne</p>
+      <h1 class="display title">Design system</h1>
+      <p class="lead">
+        Esprit graphique : affiche cinéma bold, noir et blanc, fond blanc. Cette page
+        recense les tokens et composants réutilisés sur le site.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="display block-title">Couleurs</h2>
+      <div class="swatches">
+        {
+          colors.map((c) => (
+            <div class="swatch">
+              <div class:list={["chip", { dark: c.swatchDark }]} style={`background:${c.value}`} />
+              <p class="swatch-name">{c.name}</p>
+              <p class="swatch-value">{c.value}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <h2 class="display block-title">Typographie</h2>
+      <p class="lead">
+        <strong>Anton</strong> (<code>--display</code>) pour les titres, <strong>Archivo</strong>
+        (<code>--body</code>) pour le texte courant.
+      </p>
+
+      <div class="type-scale">
+        {
+          scale.map((s) => (
+            <div class="type-row">
+              <span class="type-label">{s.label} — {s.size}</span>
+              {s.tag === "h1" || s.tag === "h2" || s.tag === "h3" ? (
+                <p class="display" style={`font-size:${s.size}; margin:0;`}>Heartbreak</p>
+              ) : s.label === "Eyebrow" ? (
+                <p class="eyebrow" style="margin:0;">Heartbreak / Memoria</p>
+              ) : (
+                <p style={`font-size:${s.size}; margin:0;`}>
+                  Un film sur la mémoire et la perte.
+                </p>
+              )}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="display block-title">Boutons</h2>
+      <div class="row">
+        <button class="cta">Envoyer</button>
+        <button class="cta outline">Secondaire</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <h2 class="display block-title">Formulaire</h2>
+      <div class="field-row demo-form">
+        <div class="field">
+          <label for="ds-nom">Nom et prénom</label>
+          <input id="ds-nom" name="ds-nom" type="text" placeholder="Jeanne Dupont" />
+        </div>
+        <div class="field">
+          <label for="ds-email">Email</label>
+          <input id="ds-email" name="ds-email" type="email" placeholder="jeanne@exemple.com" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="display block-title">Divers</h2>
+
+      <p class="misc-label">Eyebrow</p>
+      <p class="eyebrow">Label de section</p>
+
+      <p class="misc-label">Séparateur (.hr)</p>
+      <hr class="hr" />
+
+      <p class="misc-label">Panel</p>
+      <div class="panel-demo">Bloc sur fond --panel</div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .section {
+    padding-block: clamp(3rem, 8vh, 6rem);
+  }
+
+  .section.alt {
+    background: var(--panel);
+  }
+
+  .title {
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    margin-block: 0.5rem 1rem;
+  }
+
+  .lead {
+    color: var(--grey);
+    font-size: 1.1rem;
+    max-width: 60ch;
+    margin-bottom: 1rem;
+  }
+
+  .block-title {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    margin-block: 0 2rem;
+  }
+
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .chip {
+    height: 80px;
+    border: 1px solid var(--line);
+  }
+
+  .swatch-name {
+    margin: 0.75rem 0 0.1rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+
+  .swatch-value {
+    margin: 0;
+    color: var(--grey);
+    font-size: 0.8rem;
+  }
+
+  .type-scale {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .type-row {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 1.5rem;
+  }
+
+  .type-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 0.5rem;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+  }
+
+  .cta {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 1rem 1.75rem;
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    font-family: var(--body);
+  }
+
+  .cta.outline {
+    background: transparent;
+    color: var(--black);
+    border: 1px solid var(--black);
+  }
+
+  .demo-form {
+    max-width: 700px;
+  }
+
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 600px) {
+    .field-row {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--grey);
+  }
+
+  input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--line);
+    color: var(--black);
+    font-family: var(--body);
+    font-size: 1rem;
+    padding: 0.6rem 0;
+  }
+
+  input:focus {
+    outline: none;
+    border-color: var(--black);
+  }
+
+  .misc-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin: 2rem 0 0.75rem;
+  }
+
+  .misc-label:first-of-type {
+    margin-top: 0;
+  }
+
+  .panel-demo {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 2rem;
+    font-size: 0.9rem;
+    color: var(--grey);
+  }
+</style>

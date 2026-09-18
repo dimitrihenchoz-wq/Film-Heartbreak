@@ -1,0 +1,167 @@
+---
+import { base, withBase } from "../lib/base";
+
+const links = [
+  { href: "/#film", label: "Le film" },
+  { href: "/#campagne", label: "La campagne" },
+  { href: "/#ressources", label: "Ressources" },
+  { href: "/#agence", label: "Agence 6-12" },
+  { href: "/contact", label: "Contact" },
+];
+
+const current = Astro.url.pathname;
+---
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href={withBase("/")} class="mark">
+      <img src={`${base}/images/Logo-Heartbreak.png`} alt="Heartbreak / Memoria" />
+    </a>
+
+    <button class="hamburger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu">
+      <span class="line"></span>
+      <span class="line"></span>
+      <span class="line"></span>
+    </button>
+
+    <ul id="nav-menu">
+      {
+        links.map((link) => (
+          <li>
+            <a href={withBase(link.href)} class:list={{ active: current === withBase(link.href) }}>
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</nav>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>(".hamburger");
+  const menu = document.querySelector<HTMLUListElement>("#nav-menu");
+
+  button?.addEventListener("click", () => {
+    const isOpen = menu?.classList.toggle("open");
+    button.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  });
+
+  menu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      menu.classList.remove("open");
+      button?.setAttribute("aria-expanded", "false");
+    });
+  });
+</script>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250, 250, 248, 0.85);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 1.1rem;
+    gap: 1rem;
+  }
+
+  .mark {
+    display: block;
+    text-decoration: none;
+  }
+
+  .mark img {
+    height: clamp(28px, 5vw, 36px);
+    width: auto;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .hamburger .line {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--black);
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(0.75rem, 3vw, 2rem);
+    margin: 0;
+    padding: 0;
+  }
+
+  ul a {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--grey);
+    padding-bottom: 4px;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  ul a:hover,
+  ul a.active {
+    color: var(--black);
+    border-color: var(--black);
+  }
+
+  @media (max-width: 700px) {
+    .hamburger {
+      display: flex;
+    }
+
+    ul {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      gap: 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+    }
+
+    ul.open {
+      display: flex;
+    }
+
+    ul li {
+      width: 100%;
+    }
+
+    ul a {
+      display: block;
+      padding: 1rem clamp(1.25rem, 5vw, 4rem);
+      border-bottom: 1px solid var(--line);
+    }
+  }
+</style>

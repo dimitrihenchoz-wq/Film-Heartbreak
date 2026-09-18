@@ -1,0 +1,129 @@
+---
+import { withBase } from "../lib/base";
+---
+
+<section class="hero">
+  <div class="visual">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/Ww0fs7y43Nw?autoplay=1&mute=1&loop=1&playlist=Ww0fs7y43Nw&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+      title="Bande-annonce — Heartbreak"
+      allow="autoplay; encrypted-media"
+      tabindex="-1"
+    ></iframe>
+  </div>
+  <div class="container hero-inner">
+    <p class="eyebrow">Campagne ludo-pédagogique de l'Agence 6-12</p>
+    <h1 class="display title">
+      HEARTBREAK{" "}
+      <span class="slash">/</span>{" "}
+      MEMORIA
+    </h1>
+    <p class="tagline">
+      Un film pour comprendre. Une rencontre pour débattre. Une campagne pour
+      transmettre.
+    </p>
+    <div class="cta-row">
+      <a class="cta" href={withBase("/#formules")}>Je réserve une projection</a>
+      <a class="cta ghost" href={withBase("/#campagne")}>Je découvre la campagne</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 90svh;
+    display: flex;
+    align-items: flex-end;
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+  }
+
+  .visual {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .visual::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(5, 5, 5, 0.9),
+      rgba(5, 5, 5, 0.35) 55%,
+      rgba(5, 5, 5, 0.15)
+    );
+  }
+
+  .visual iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 56.25vw; /* 16:9 */
+    min-width: 177.78vh; /* 16:9 */
+    min-height: 100vh;
+    transform: translate(-50%, -50%);
+    border: none;
+    filter: grayscale(1) contrast(1.1);
+    opacity: 0.8;
+  }
+
+  .hero-inner {
+    position: relative;
+    padding-block: clamp(3rem, 10vh, 6rem);
+    width: 100%;
+    color: var(--white);
+  }
+
+  .hero-inner .eyebrow {
+    color: var(--white);
+  }
+
+  .title {
+    font-size: clamp(2rem, 5.5vw, 4rem);
+    margin: 0;
+  }
+
+  .slash {
+    color: var(--line);
+    padding-inline: 0.15em;
+  }
+
+  .tagline {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+    line-height: 1.4;
+    max-width: 45ch;
+    margin: 1.5rem 0 0;
+  }
+
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .cta {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.1rem 1.75rem;
+    background: var(--white);
+    color: var(--black);
+  }
+
+  .cta.ghost {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid var(--white);
+  }
+</style>

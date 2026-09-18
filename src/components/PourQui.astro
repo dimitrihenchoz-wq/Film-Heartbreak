@@ -1,0 +1,85 @@
+---
+const audiences = [
+  "Associations et organisations engagées",
+  "Collectivités, villes et institutions",
+  "Établissements scolaires, enseignants et acteurs de l'éducation",
+  "Entreprises, fondations et partenaires RSE / philanthropie",
+  "Cinémas et réseaux de salles",
+  "Organisateurs de projections-débats",
+  "Grand public souhaitant organiser ou soutenir une projection",
+  "Partenaires médias, culturels et institutionnels",
+];
+---
+
+<section class="pour-qui">
+  <div class="container">
+    <p class="eyebrow">La campagne</p>
+    <h2 class="display title">Pour qui ?</h2>
+
+    <div class="audience-grid">
+      <ul class="audience-list">
+        {audiences.slice(0, 4).map((a) => <li>{a}</li>)}
+      </ul>
+      <ul class="audience-list">
+        {audiences.slice(4).map((a) => <li>{a}</li>)}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pour-qui {
+    padding-block: clamp(4rem, 10vh, 7rem);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .title {
+    font-size: 3rem;
+    margin-block: 0.5rem 2.5rem;
+  }
+
+  .audience-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0 2rem;
+    max-width: 800px;
+  }
+
+  @media (min-width: 700px) {
+    .audience-grid {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    .audience-grid .audience-list:first-child {
+      grid-column: 1 / 7;
+    }
+
+    .audience-grid .audience-list:last-child {
+      grid-column: 7 / 13;
+    }
+  }
+
+  .audience-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .audience-list li {
+    position: relative;
+    padding: 1rem 0 1rem 2rem;
+    border-top: 1px solid var(--line);
+    font-size: 1rem;
+  }
+
+  .audience-list li:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .audience-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--grey);
+  }
+</style>
