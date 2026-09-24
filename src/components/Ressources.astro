@@ -5,7 +5,7 @@ import { base } from "../lib/base";
 <section class="ressources" id="ressources">
   <div class="container">
     <p class="eyebrow">Ressources</p>
-    <h2 class="display title">L'affiche et la présentation de la campagne</h2>
+    <h2 class="display title">Présentation des supports de la campagne HEARTBREAK / MEMORIA</h2>
     <p class="lead">
       De quoi présenter le dispositif en une image ou en dix minutes — à
       télécharger et diffuser librement.
@@ -15,14 +15,14 @@ import { base } from "../lib/base";
       <figure class="poster-card">
         <div class="poster-visual">
           <figcaption class="poster-caption">Affiche officielle</figcaption>
-          <img src={`${base}/images/heartbreak-poster.png`} alt="Affiche officielle du film Heartbreak" />
+          <img src={`${base}/images/Affiche.jpg`} alt="Affiche officielle du film Heartbreak" />
         </div>
         <div class="poster-body">
           <p class="res-text">
             Format portrait, prête à imprimer ou à partager — pour les
             salles, associations et établissements scolaires.
           </p>
-          <a class="cta" href={`${base}/images/heartbreak-poster.png`} download>
+          <a class="cta" href={`${base}/images/Affiche.jpg`} download>
             Télécharger l'affiche
           </a>
         </div>
@@ -30,25 +30,24 @@ import { base } from "../lib/base";
 
       <div class="deck-card">
         <p class="res-label">Document PDF</p>
-        <h3 class="deck-title display">La présentation de la campagne</h3>
+        <h3 class="deck-title display">Les supports de la campagne HEARTBREAK / MEMORIA</h3>
         <p class="res-text">
-          Le concept, le film, le dispositif, les formules de partenariat et
-          l'Agence 6-12 — le support complet à envoyer à un partenaire ou une
-          salle.
+          <strong>L'affiche personnalisable</strong> : le visuel officiel de
+          la campagne, à compléter avec votre lieu, votre date et votre logo.
         </p>
         <p class="res-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <strong>Le dossier de presse</strong> : tous les éléments pour
+          présenter la campagne lors de vos conférences de presse et auprès
+          des médias locaux.
         </p>
         <p class="res-text">
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat.
+          <strong>Le guide animateur</strong> : pour préparer et animer le
+          débat après la projection.
         </p>
         <p class="res-text">
-          Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-          cupidatat non proident, sunt in culpa qui officia deserunt mollit
-          anim id est laborum.
+          <strong>Le kit pédagogique</strong> : des outils pour comprendre,
+          déconstruire les préjugés et agir, à destination des publics
+          accompagnés.
         </p>
         <a class="cta" href={`${base}/files/heartbreak-memoria-presentation.pptx`} download>
           Télécharger la présentation
@@ -147,6 +146,10 @@ import { base } from "../lib/base";
     font-size: 1.1rem;
     line-height: 1.5;
     margin: 0 0 1.5rem;
+  }
+
+  .res-text strong {
+    color: var(--black);
   }
 
   .poster-body .res-text {

@@ -10,9 +10,10 @@ import Footer from "../components/Footer.astro";
   <section class="section">
     <div class="container">
       <p class="eyebrow">Contact</p>
-      <h1 class="display title">Organiser, financer ou accueillir une projection</h1>
+      <h1 class="display title">Devenir partenaire</h1>
+      <p class="lead intro">Organiser, financer ou accueillir une projection.</p>
       <p class="lead">
-        Une question sur le film, la campagne ou une projection ? Écrivez-nous.
+        Une question sur le film, la campagne ou une projection ?<br />Écrivez-nous.
       </p>
 
       <div class="contact-grid">
@@ -200,5 +201,13 @@ import Footer from "../components/Footer.astro";
     border: none;
     cursor: pointer;
     font-family: var(--body);
+  }
+
+  .lead.intro {
+    margin-bottom: 0;
+  }
+
+  .lead.intro + .lead {
+    margin-top: 0.25rem;
   }
 </style>
